@@ -36,3 +36,10 @@ form  { display: table;    display: inline-block;   }
 p     { display: table-row;  }
 label { display: table-cell;   }
 input { display: table-cell;    }
+
+.counter{
+  color:rgb(255,255,255);
+  font-size:1000%;
+  text-align:center;
+  
+}

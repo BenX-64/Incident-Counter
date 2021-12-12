@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <link rel = "stylesheet" href = "mscss.css">
+        <link rel = "stylesheet" href = "mcss.css">
         <Title>
             Incident Name
         </Title>
@@ -15,9 +15,24 @@
         <h1>
             Days Since Last Incident
         </h1>
-        <p style="font-size:500%">
+        <div class = "counter">
             #
+        </div>
+        <div>
+            Total: # <br>
+            Last Incident On: YYYY-MM-DD
+        </div>
+        <p>
+            <form action = "/change_counter.php">
+                <input type="submit" value = "Increment">
+                <input type="submit" value = "Override">
+                <p>
+                    <label for = "incpass_input" style="text-align: right;">Password: </label>
+                    <input type="password" id = "incpass_input" name = "incpass_input" placeholder = "(Leave Blank if None)">
+                </p>
+            </form>
         </p>
+    </body>
 
 
 
