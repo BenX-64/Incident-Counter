@@ -18,11 +18,11 @@
             #
         </div>
         <div>
-            Total: # <br>
+            Total: <?php $_GET['id']?> <br>
             Last Incident On: YYYY-MM-DD
         </div>
         <p>
-            <form action = "/change_counter.php">
+            <form action = "/change_counter.php" method = "post">
                 <input type="submit" value = "Increment">
             </form>
         </p>
