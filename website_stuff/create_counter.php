@@ -18,17 +18,22 @@
     $date = date("y-m-d");
     //Creates unique id
     chdir('../server_stuff/');
-    $tag = shell_exec('create_id.exe');
-    /*
-    echo $conn->query("SELECT 'tag','incname','inctotal','inclaston' FROM 'incidents' WHERE tag = $tag");
 
-    exit();
-    */
-    $sql = "INSERT INTO `incidents`(`tag`, `incname`, `inctotal`, `inclaston`) VALUES ('$tag','$incname','[value-3]','$date')";
-    if($conn->query($sql) == TRUE){
+
+    $tag = shell_exec('create_id.exe');
+    $sql_id =  "SELECT tag FROM incidents WHERE tag = $tag";
+    $temp = $conn->query($sql_id);
+    
+    while($temp->num_rows > 0){
+        $tag = shell_exec('create_id.exe');
+        $temp = $conn->query($sql_id);
+    }
+    
+    $sql_create_inc = "INSERT INTO `incidents`(`tag`, `incname`, `inctotal`, `inclaston`) VALUES ('$tag','$incname','[value-3]','$date')";
+    if($conn->query($sql_create_inc) == TRUE){
         echo "it works!";
     }else{
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql_create_inc . "<br>" . $conn->error;
     }
     $conn->close();
 
