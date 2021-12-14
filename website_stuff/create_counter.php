@@ -18,12 +18,10 @@
     $date = date("y-m-d");
     //Creates unique id
     chdir('../server_stuff/');
-
-
     $tag = shell_exec('create_id.exe');
     $sql_id =  "SELECT tag FROM incidents WHERE tag = $tag";
     $temp = $conn->query($sql_id);
-    
+    //Checks if generated id is unique and regenerates until id is unique. 
     while($temp->num_rows > 0){
         $tag = shell_exec('create_id.exe');
         $temp = $conn->query($sql_id);
@@ -35,6 +33,6 @@
     }else{
         echo "Error: " . $sql_create_inc . "<br>" . $conn->error;
     }
+    
     $conn->close();
-
 ?>
