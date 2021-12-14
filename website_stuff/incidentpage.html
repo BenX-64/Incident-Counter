@@ -15,14 +15,14 @@
             Days Since Last Incident
         </h1>
         <div class = "counter">
-            #
+            <?php $_GET[] ?>
         </div>
         <div>
-            Total: # <br>
+            Total: <?php $_GET['id']?> <br>
             Last Incident On: YYYY-MM-DD
         </div>
         <p>
-            <form action = "/change_counter.php">
+            <form action = "index.php" method = "post">
                 <input type="submit" value = "Increment">
             </form>
         </p>
