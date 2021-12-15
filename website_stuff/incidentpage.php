@@ -34,17 +34,15 @@
             echo "<br>";
             echo "Last Incident On: ";
             echo $row["inclaston"];
+            echo "<br>";
+            echo "Tag: ".$row["tag"];
             echo "</div>";
-        ?>
-        <p>
-            <form action = "index.php" method = "post">
-                <input type="submit" value = "Increment">
+
+            echo "<p><form action = '../server_stuff/increment_counter.php?counter=".$id,"' method = 'post'>
+                <input type='submit' value = 'Increment'>
             </form>
-        </p>
+            </p>";
+        ?>
     </body>
 
-
-
-
-    </body>
 </html>
