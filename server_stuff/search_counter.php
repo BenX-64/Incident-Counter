@@ -19,3 +19,16 @@
 
     $conn->close();
 ?>
+  /*
+           $id = $_GET["counter"];
+           $db_host = "localhost";
+           $db_user = "root";
+           $db_pwd = "";
+           $db_name = "incidentcounter";
+           $conn = new mysqli($db_host,$db_user,$db_pwd,$db_name);
+           $sql = "SELECT tag, inctotal,inclaston FROM incidents WHERE tag = $id";
+          // echo "$id";
+           $result = $conn->query($sql);
+           $row = $result->fetch_array();
+           echo $row["inclaston"];
+           */

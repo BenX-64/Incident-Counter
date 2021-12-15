@@ -19,6 +19,8 @@
     //Creates unique id
     $tag = shell_exec('create_id.exe');
     $sql_id =  "SELECT tag FROM incidents WHERE tag = $tag";
+    //header("location: create_counter.php?error:stmtfailed");
+
     $temp = $conn->query($sql_id);
     //Checks if generated id is unique and regenerates until id is unique.
     while($temp->num_rows != 0){
@@ -26,9 +28,10 @@
         $temp = $conn->query($sql_id);
     }
     
+
     $sql_create_inc = "INSERT INTO `incidents`(`tag`, `incname`, `inctotal`, `inclaston`) VALUES ('$tag','$incname','[value-3]','$date')";
     if($conn->query($sql_create_inc) == TRUE){
-        echo "it works!";
+        header('location:../website_stuff/incidentpage.php?counter='.$tag);
     }else{
         echo "Error: " . $sql_create_inc . "<br>" . $conn->error;
     }
