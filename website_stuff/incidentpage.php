@@ -19,6 +19,10 @@
             $db_pwd = "";
             $db_name = "incidentcounter";
             $conn = new mysqli($db_host,$db_user,$db_pwd,$db_name);
+            if(!is_numeric($id)){
+                echo "<h1>Error: Invalid Tag</h1>";
+                exit();
+            }
             $sql = "SELECT tag, incname,inctotal,inclaston FROM incidents WHERE tag = $id";
             $result = $conn->query($sql);
             if($result->num_rows == 0){

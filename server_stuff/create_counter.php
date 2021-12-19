@@ -30,12 +30,24 @@
         }
     }
 
-    $sql_create_inc = "INSERT INTO `incidents`(`tag`, `incname`, `inctotal`, `inclaston`) VALUES ('$tag','$incname','[value-3]','$date')";
+    /*
+    $sql_create_inc = "INSERT INTO `incidents`(`tag`, `incname`, `inclaston`) VALUES ('$tag','$incname','$date')";
     if($conn->query($sql_create_inc) == TRUE){
         header('location:../website_stuff/incidentpage.php?counter='.$tag);
     }else{
         echo "Error: " . $sql_create_inc . "<br>" . $conn->error;
     }
+*/
+
+    $stmt = $conn->prepare("INSERT INTO incidents(tag, incname, inclaston) VALUES (?,?,?)");
+    $stmt->bind_param("sss",$tag,$incname,$date);
+    if($stmt->execute()){
+        header('location:../website_stuff/incidentpage.php?counter='.$tag);
+    }else{
+        echo "failed :/";
+    }
+    $stmt->close();
+
     $conn->close();
 
 ?>
